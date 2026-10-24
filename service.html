@@ -11,11 +11,15 @@
 <body>
 
     <header>
-      <a href="index.html"><img src="assets/logo.png" class="logo"></a>
+      <a href="index.html"><img src="assets/logo.png" class="logo" alt="Diesel Delivery"></a>
 
-<button class="menu-toggle" aria-label="Menu">☰</button>
+<button class="menu-toggle" aria-label="فتح قائمة التنقل" aria-expanded="false" aria-controls="mainNav">☰</button>
 <nav id="mainNav">
-<a href="index.html">الرئيسية</a>
+<a href="index.html#hero">الرئيسية</a>
+<a href="index.html#about">من نحن</a>
+<a href="service.html" aria-current="page">خدماتنا</a>
+<a href="index.html#why">لماذا نحن؟</a>
+<a href="index.html#order">تواصل معنا</a>
 </nav>
 <a class="phone" href="tel:+962797212039">
 <svg class="nav-phone-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -25,7 +29,7 @@
 </header>
 
 <section class="services-page">
-<h1>خدماتنا</h1>
+<div class="services-page-intro"><span class="eyebrow">حلول طاقة تلائم احتياجاتك</span><h1>خدمات توصيل الديزل</h1><p>من منزلك إلى منشأتك، خيارات توريد مرنة وفريق جاهز للتواصل معك.</p></div>
 
 <div class="services-grid">
 
@@ -75,7 +79,7 @@
 
     <div class="footer-links">
       <h3>روابط سريعة</h3>
-      <a href="#home">الرئيسية</a>
+      <a href="index.html#hero">الرئيسية</a>
     </div>
 
     <div class="footer-contact">
@@ -88,7 +92,7 @@
         <span class="svg-icon phone-icon"></span>
         +962 7 9721 2039
       </p>
-      <a class="whatsapp-btn" href="#">
+      <a class="whatsapp-btn" href="https://wa.me/962797212039" target="_blank" rel="noopener noreferrer">
         <span class="svg-icon whatsapp-icon"></span>
         WhatsApp
       </a>
@@ -103,8 +107,8 @@
 <script>
 const btn=document.querySelector(".menu-toggle");
 const nav=document.querySelector("#mainNav");
-btn.addEventListener("click",()=>{nav.classList.toggle("open");btn.classList.toggle("active");});
-nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+btn.addEventListener("click",()=>{const opened=nav.classList.toggle("open");btn.classList.toggle("active",opened);btn.setAttribute("aria-expanded",String(opened));});
+nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");btn.classList.remove("active");btn.setAttribute("aria-expanded","false");}));
 </script>
 </body>
 </html>
